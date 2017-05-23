@@ -366,7 +366,7 @@ and _fslex_tokenstream  _fslex_state lexbuf =
           )
   | 28 -> ( 
 # 64 "Lexer.fsl"
-                                                               Parser.FLOAT (Double.Parse(LexBuffer<_>.LexemeString lexbuf),(range lexbuf)) 
+                                                               Parser.FLOAT (Double.Parse(LexBuffer<_>.LexemeString lexbuf, System.Globalization.CultureInfo.InvariantCulture),(range lexbuf)) 
 # 370 "Lexer.fs"
           )
   | 29 -> ( 

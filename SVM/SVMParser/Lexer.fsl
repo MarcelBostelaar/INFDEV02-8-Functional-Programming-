@@ -61,7 +61,7 @@ and tokenstream = parse
 | "jeq" { Parser.JEQ (range lexbuf) }
 | eof   	{ Parser.EOF }
 | ['-']?digit+   { Parser.INT (Int32.Parse(LexBuffer<_>.LexemeString lexbuf),(range lexbuf)) }
-| ['-']?digit+('.'digit+)?(['e''E']digit+)?   { Parser.FLOAT (Double.Parse(LexBuffer<_>.LexemeString lexbuf),(range lexbuf)) }
+| ['-']?digit+('.'digit+)?(['e''E']digit+)?   { Parser.FLOAT (Double.Parse(LexBuffer<_>.LexemeString lexbuf, System.Globalization.CultureInfo.InvariantCulture),(range lexbuf)) } //['-']?digit+('.'digit+)?(['e''E']digit+)?   { Parser.FLOAT (Double.Parse(LexBuffer<_>.LexemeString lexbuf),(range lexbuf)) } <-originals
 | "\"" [^'"']* "\"" { let s = LexBuffer<_>.LexemeString lexbuf in Parser.STRING ((s.Trim [|'\"'|]),(range lexbuf)) }
 | Id { Parser.ID((LexBuffer<_>.LexemeString lexbuf),range lexbuf) }
 | _    		{
