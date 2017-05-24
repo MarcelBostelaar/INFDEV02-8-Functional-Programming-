@@ -23,6 +23,8 @@ sub reg1 1
 //skip the else block 
 jmp endif
 #else
+//move back x into reg1 (it has been overwritten)
+mov reg1 [15]
 // x += 1
 add reg1 1
 #endif
